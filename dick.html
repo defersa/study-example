@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Первая страница дачного проекта</title>
+    <style>
+        /* 1. ПЕРЕМЕННЫЕ (Современная фишка)
+          Задаем палитру сайта в одном месте. Если захотим поменять цвет,
+          сделаем это тут, и он поменяется везде! */
+        :root {
+            --main-bg: #f4f1ea;        /* Светло-бежевый фон (под бумагу/дерево) */
+            --forest-green: #2d5a3f;   /* Глубокий зеленый цвет леса */
+            --accent-orange: #d46b33;  /* Цвет костра/дерева для кнопок и акцентов */
+            --text-color: #333333;     /* Темно-серый для текста (черный бьет по глазам) */
+            --white: #ffffff;
+        }
+
+        /* 2. БАЗОВЫЙ СБРОС (Пишут всегда в начале) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Чтобы внутренние отступы не увеличивали ширину блоков */
+        }
+
+        body {
+            /* Подключаем системный красивый шрифт без засечек */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--main-bg);
+            color: var(--text-color);
+            line-height: 1.6; /* Делаем строчки чуть свободнее, чтобы легко читалось */
+        }
+
+        /* 3. КАРКАС И ВЫРАВНИВАНИЕ */
+        .content {
+            max-width: 900px; /* Ограничиваем ширину, чтобы текст не разъезжался на огромном экране */
+            margin: 0 auto;   /* Центрируем сайт по середине экрана */
+            padding: 20px;
+        }
+
+        /* 4. ШАПКА И НАВИГАЦИЯ (FLEXBOX) */
+        .header {
+            background-color: var(--forest-green);
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style: none; /* Убираем точки у списка */
+            display: flex;    /* ВАЖНО: Выстраиваем пункты меню в строчку! */
+            flex-wrap: wrap;  /* Если не влезает - переносим на новую строку */
+            justify-content: center; /* Центрируем меню */
+            align-items: center;
+            gap: 5px; /* Расстояние между кнопками */
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none; /* Убираем подчеркивание у ссылок */
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 20px; /* Скругляем углы (получаются кнопочки) */
+            transition: 0.9s; /* Плавная анимация */
+        }
+
+        nav a:hover {
+            background-color: var(--accent-orange); /* При наведении красим в оранжевый */
+        }
+
+        /* 5. ТИПОГРАФИКА (Тексты и заголовки) */
+        h1 {
+            color: var(--forest-green);
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            color: var(--forest-green);
+            margin: 40px 0 20px;
+            border-bottom: 2px solid var(--accent-orange); /* Подчеркивание заголовков */
+            padding-bottom: 10px;
+        }
+
+        .textblock {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Легкая тень для объема */
+            margin-bottom: 25px;
+        }
+
+        .textblock p { margin-bottom: 15px; }
+        .textblock ul { margin-left: 20px; }
+        .textblock li { margin-bottom: 15px; }
+
+        .highlight {
+            background-color: #ffdddd;
+            color: #cc0000;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* 6. КАРТИНКА */
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover; /* Чтобы картинка не сплющивалась, а красиво обрезалась */
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 7. ТАБЛИЦА */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Убираем двойные рамки */
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden; /* Чтобы углы таблицы были круглыми */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee; /* Тонкая линия между строками */
+        }
+
+        th {
+            background-color: var(--forest-green);
+            color: var(--white);
+        }
+
+        tr:hover {
+            background-color: #f9f9f9; /* Подсвечиваем строку при наведении */
+        }
+
+        /* 8. ФОРМА */
+        .contact-form form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Вот почему мы убрали <br>! CSS делает отступы сам */
+        }
+
+        label {
+            display: block; /* Заставляем подпись быть над полем ввода, а не сбоку */
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%; /* Поля ввода на всю ширину блока */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit; /* Берем шрифт сайта, а не уродливый шрифт браузера */
+            font-size: 1rem;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2); /* Чуть увеличим галочку */
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent-orange);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b55727; /* Темнеет при наведении */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <nav>
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Близко, но дороже</a></li>
+            <li><a href="#"> Чуток подальше, но прям дешево</a></li>
+            <li><a href="#">Для буржуев</a></li>
+            <li><a href="#">Если нужен движ</a></li>
+            <li><a href="#">Хочу побыть один, чтоб рядом только волки</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="content">
+    <!-- Добавил ссылку на красивую картинку с лесом для атмосферы и класс hero-image -->
+    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=1000&auto=format&fit=crop" alt="Уютный домик в лесу" class="hero-image">
+
+    <h1>Нужен короткий и недорогой отдых на природе за адекватные деньги?</h1>
+
+    <section class="text-section">
+        <div class="textblock">
+            <p>Устали от бесконечной гонки, пробок и дедлайнов? Нажмите «Москву» на паузу.
+                Знакомое чувство, когда выходные пролетают молниеносно, а ощущения отдыха
+                так и не появилось? Шум мегаполиса, гул машин за окном, вечно вибрирующий
+                телефон с рабочими чатами, бетонные джунгли и вечная спешка
+                выжимают все соки.
+            </p>
+            <p><span class="highlight">Пришло время остановиться</span></p>
+            <p>Подарите себе настоящую перезагрузку — сбегите на идеальную дачу, где время течет совершенно иначе.</p>
+        </div>
+
+        <h2>Ваша личная дача. Без грядок, забот и ремонта</h2>
+
+        <div class="textblock">
+            <p>Наш проект — это не просто аренда домиков. Это концепция короткого,
+                но глубокого загородного отдыха для тех, кому нужно срочно выдохнуть.
+                Забудьте стереотипы о том, что дача — это тяжелый труд, покос травы или
+                вечная стройка. На наших дачах вам не придется делать абсолютно ничего.
+                Ваш единственный план на уикенд — отдыхать душой и телом.
+            </p>
+            <p>
+                <strong>Представьте свое идеальное утро:</strong><br>
+                Вы просыпаетесь не от резкого звонка будильника и шума улицы, а от
+                мягкого солнечного света и пения птиц. Вы выходите на просторную
+                деревянную террасу с чашкой свежесваренного кофе.
+                Вокруг — только вековой хвойный лес, чистейший воздух, от
+                которого с непривычки кружится голова, и звенящая, исцеляющая тишина.
+            </p>
+            <p>
+                <strong>А как насчет вечера?</strong><br>
+                Днем можно неспешно гулять по лесным тропинкам, читать ту самую книгу, до которой месяцами не доходили руки, уютно укутавшись в плед. А вечером — разжечь огонь. Потрескивание дров в камине, сочный шашлык на мангале, жаркая банька, смывающая всю городскую усталость, и душевные разговоры до глубокой ночи под звездным небом, которого в Москве просто не видно.
+            </p>
+        </div>
+
+        <h2>Почему вам нужно приехать именно к нам?</h2>
+        <div class="textblock">
+            <ul>
+                <li>🚗 <strong>Близко и удобно.</strong> Всего 1–1,5 часа от МКАД, и вы в другом мире. Не нужно тратить полдня на дорогу, покупать авиабилеты или собирать огромные чемоданы. Спонтанный отдых — самый лучший.</li>
+                <li>🛏 <strong>Комфорт хорошего отеля.</strong>  Мы объединили романтику загородной жизни с привычным городским комфортом. Вас ждут ортопедические матрасы для глубокого сна, белоснежное постельное белье, теплые полы, тропический душ и стильный современный интерьер.</li>
+                <li>🌲 <strong>Абсолютная приватность.</strong> Наши домики вписаны в ландшафт так, чтобы никто не нарушал ваш покой. Никаких чужих взглядов и шумных толп — только вы, ваши близкие и природа.</li>
+                <li>🔥 <strong>Всё готово к вашему приезду.</strong> Мы продумали каждую мелочь. Дрова уже наколоты, решетка для мангала на месте, посуда сияет чистотой, а в доме тепло и пахнет деревом. Вам осталось только переступить порог.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="price-list">
+        <h2>Прайс-лист на спокойную жизнь</h2>
+        <!-- Убрал border="4", так как мы нарисовали красивую таблицу в CSS -->
+        <table>
+            <thead>
+            <tr>
+                <th>Услуга</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Близко, но дороже</td>
+                <td>7к в сутки</td>
+            </tr>
+            <tr>
+                <td>Чуток подальше, но прям дешево</td>
+                <td>3к в сутки</td>
+            </tr>
+            <tr>
+                <td>Для буржуев</td>
+                <td>70к в сутки</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="contact-form">
+        <h2>Не мучай себя - пиши нам и просто отдохни</h2>
+        <form action="" method="get" accept-charset="utf-8">
+            <div class="form-group">
+                <label for="user-name">Ваше имя:</label>
+                <input type="text" id="user-name" placeholder="Выгорающий Иван">
+            </div>
+
+            <div class="form-group">
+                <label for="user-phone">Ваш номер:</label>
+                <input type="tel" id="user-phone" placeholder="+7 (999) 000-00-00">
+            </div>
+
+            <div class="form-group">
+                <label for="user-email">Ваша почта:</label>
+                <input type="email" id="user-email" placeholder="ivan@mail.ru">
+            </div>
+
+            <div class="form-group">
+                <label for="service">Что вас интересует?</label>
+                <select id="service">
+                    <option value="closeButExpensive">Близко, но дороже</option>
+                    <option value="farButCheaper">Чуток подальше, но прям дешево</option>
+                    <option value="burzhui">Для буржуев</option>
+                </select>
+            </div> <!-- Тут была опечатка (<div> вместо </div>), я исправил -->
+
+            <div class="form-group">
+                <label for="message">Опишите ваши хотелки</label>
+                <textarea id="message" rows="4" placeholder="Хочу спать два дня и чтобы никто не трогал..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: normal; cursor: pointer;">
+                    <input type="checkbox"> Я согласен на обработку данных
+                </label>
+            </div>
+
+            <button type="submit">Отдохни</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Дачный проект. Все права защищены.</p>
+</footer>
+
+
+</body>
+</html>
