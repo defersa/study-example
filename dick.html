@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Первая страница дачного проекта</title>
+    <script src="../homework/task1.js" defer></script>
     <style>
         /* 1. ПЕРЕМЕННЫЕ (Современная фишка)
           Задаем палитру сайта в одном месте. Если захотим поменять цвет,
@@ -10,7 +11,7 @@
         :root {
             --main-bg: #f4f1ea;        /* Светло-бежевый фон (под бумагу/дерево) */
             --forest-green: #2d5a3f;   /* Глубокий зеленый цвет леса xxccc*/
-            --accent-orange: #d46b33;  /* Цвет костра/дерева для кнопок и акцентов */
+            --accent-orange: #7bd433;  /* Цвет костра/дерева для кнопок и акцентов */
             --text-color: #333333;     /* Темно-серый для текста (черный бьет по глазам) */
             --white: #ffffff;
         }
@@ -195,6 +196,94 @@
             margin-top: 40px;
         }
 
+        .example {
+            width: 100%;
+            background-color: green;
+        }
+
+        #text {
+            display: block;
+            height: 100px;
+            width: 456px;
+        }
+
+        #table th {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #table td {
+            width: 150px;
+            white-space: nowrap;
+            text-align: center;
+            vertical-align: bottom;
+            padding-top: 5px;
+            padding-bottom: 12px;
+            cursor: pointer;
+        }
+
+        #table .nw {
+            background: #999;
+        }
+
+        #table .n {
+            background: #03f;
+            color: #fff;
+        }
+
+        #table .ne {
+            background: #ff6;
+        }
+
+        #table .w {
+            background: #ff0;
+        }
+
+        #table .c {
+            background: #60c;
+            color: #fff;
+        }
+
+        #table .e {
+            background: #09f;
+            color: #fff;
+        }
+
+        #table .sw {
+            background: #963;
+            color: #fff;
+        }
+
+        #table .s {
+            background: #f60;
+            color: #fff;
+        }
+        .outer {
+            width: 1000px;
+            height: 600px;
+            border: 4px solid black;
+            padding: 35px;
+            font-size: 28px;
+        }
+
+        .middle {
+            width: 80%;
+            height: 400px;
+            border: 4px solid black;
+            margin: 40px auto 0;
+            padding: 30px;
+            font-size: 28px;
+        }
+
+        .inner {
+            width: 65%;
+            height: 220px;
+            border: 4px solid black;
+            margin: 40px auto 0;
+            padding: 25px;
+            font-size: 28px;
+        }
+
     </style>
 </head>
 <body>
@@ -217,7 +306,7 @@
 
     <h1>Нужен короткий и недорогой отдых на природе за адекватные деньги?</h1>
 
-    <section class="text-section">
+    <section class="text-section texttext">
         <div class="textblock">
             <p>Устали от бесконечной гонки, пробок и дедлайнов? Нажмите «Москву» на паузу.
                 Знакомое чувство, когда выходные пролетают молниеносно, а ощущения отдыха
@@ -231,7 +320,7 @@
 
         <h2>Ваша личная дача. Без грядок, забот и ремонта</h2>
 
-        <div class="textblock">
+        <div class="textblock ">
             <p>Наш проект — это не просто аренда домиков. Это концепция короткого,
                 но глубокого загородного отдыха для тех, кому нужно срочно выдохнуть.
                 Забудьте стереотипы о том, что дача — это тяжелый труд, покос травы или
@@ -337,6 +426,85 @@
     <p>© 2024 Дачный проект. Все права защищены.</p>
 </footer>
 
+<div class="example">
+    <p>Это образец</p>
+</div>
 
+<table id="table">
+    <tr>
+        <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
+    </tr>
+    <tr>
+        <td class="nw"><strong>Северо-Запад</strong>
+            <br>Металл
+            <br>Серебро
+            <br>Старейшины
+        </td>
+        <td class="n"><strong>Север</strong>
+            <br>Вода
+            <br>Синий
+            <br>Перемены
+        </td>
+        <td class="ne"><strong>Северо-Восток</strong>
+            <br>Земля
+            <br>Жёлтый
+            <br>Направление
+        </td>
+    </tr>
+    <tr>
+        <td class="w"><strong>Запад</strong>
+            <br>Металл
+            <br>Золото
+            <br>Молодость
+        </td>
+        <td class="c"><strong>Центр</strong>
+            <br>Всё
+            <br>Пурпурный
+            <br>Гармония
+        </td>
+        <td class="e"><strong>Восток</strong>
+            <br>Дерево
+            <br>Синий
+            <br>Будущее
+        </td>
+    </tr>
+    <tr>
+        <td class="sw"><strong>Юго-Запад</strong>
+            <br>Земля
+            <br>Коричневый
+            <br>Спокойствие
+        </td>
+        <td class="s"><strong>Юг</strong>
+            <br>Огонь
+            <br>Оранжевый
+            <br>Слава
+        </td>
+        <td class="se"><strong>Юго-Восток</strong>
+            <br>Дерево
+            <br>Зеленый
+            <br>Роман
+        </td>
+    </tr>
+
+</table>
+
+<textarea id="text"></textarea>
+
+<input type="button" onclick="text.value=''" value="Очистить">
+
+<div class="boxbox">
+<div class="outer">
+    div
+
+    <div class="middle">
+        div
+
+        <div class="inner">
+            div
+        </div>
+
+    </div>
+</div>
+</div>
 </body>
 </html>
