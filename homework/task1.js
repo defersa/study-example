@@ -141,9 +141,6 @@ burgersPromise.then(cards =>{
         singleCard.appendChild(singleCardPrice);
         singleCard.appendChild(buyButton);
 
-
-
-
     })
 })
 
