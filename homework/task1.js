@@ -1,81 +1,149 @@
-let mouseoverEx = document.querySelector('.example');
-mouseoverEx.onmouseenter= function (event) {
-    this.style.backgroundColor='red';
-    this.style.transition='1s';
-}
+const burgersPromise = Promise.resolve([
+    {
+        name: 'Классический чизбургер',
+        weight: 320,
+        ingredients: [
+            'булочка бриошь',
+            'говяжья котлета',
+            'сыр чеддер',
+            'маринованные огурцы',
+            'красный лук',
+            'кетчуп',
+            'горчица',
+        ],
+        price: 490,
+    },
+    {
+        name: 'Двойной бекон',
+        weight: 450,
+        ingredients: [
+            'булочка бриошь',
+            'две говяжьи котлеты',
+            'бекон',
+            'сыр чеддер',
+            'томат',
+            'салат айсберг',
+            'соус BBQ',
+        ],
+        price: 690,
+    },
+    {
+        name: 'Острый халапеньо',
+        weight: 360,
+        ingredients: [
+            'булочка с кунжутом',
+            'говяжья котлета',
+            'сыр чеддер',
+            'халапеньо',
+            'красный лук',
+            'томат',
+            'острый соус',
+        ],
+        price: 550,
+    },
+    {
+        name: 'Грибной бургер',
+        weight: 380,
+        ingredients: [
+            'булочка бриошь',
+            'говяжья котлета',
+            'шампиньоны',
+            'сыр гауда',
+            'карамелизированный лук',
+            'руккола',
+            'трюфельный соус',
+        ],
+        price: 620,
+    },
+    {
+        name: 'Куриный бургер',
+        weight: 340,
+        ingredients: [
+            'булочка с кунжутом',
+            'куриное филе',
+            'сыр чеддер',
+            'томат',
+            'салат айсберг',
+            'маринованные огурцы',
+            'чесночный соус',
+        ],
+        price: 470,
+    },
+]);
 
-mouseoverEx.onmouseleave= function (event) {
-   this.style.backgroundColor='green';
-    this.style.transition='2s';
+burgersPromise.then(cards =>{
+    let cardbox = document.createElement('div');
+    let footer = document.querySelector('footer');
+    cardbox.style.backgroundColor = 'green';
+    cardbox.style.display = 'flex';
+    cardbox.style.justifyContent = 'space-around';
+    cardbox.style.width = '100%';
+    cardbox.style.height = '800px';
+    footer.append(cardbox);
 
-
-}
-let currentElem = null;
-table.onmouseover = function(event) {
-    if (currentElem) return;
-    let target = event.target.closest('td');
-    if (!target) return;
-    currentElem = target;
-    target.style.background = 'pink';
-
-};
-
-
-table.onmouseout = function(event) {
-    if (!currentElem) return;
-    let relatedTarget = event.relatedTarget;
-    while (relatedTarget) {
-        if (relatedTarget == currentElem) return;
-        relatedTarget = relatedTarget.parentNode;
-        currentElem.style.background = '';
-        currentElem = null;
-
-    }}
+    cards.forEach(card => {
+        let singleCard = document.createElement('div');
+        let singleCardName = document.createElement('h2');
+        let singleCardWeight = document.createElement('p');
+        let singleCardIngredients = document.createElement('ul');
+        let singleCardPrice = document.createElement('p');
+        let buyButton = document.createElement('button');
 
 
 
-let box = document.querySelector('.boxbox');
-let big = document.querySelector('.outer');
-let medium = document.querySelector('.middle');
-let inner = document.querySelector('.inner');
+        card.ingredients.forEach(ingredient => {
+            let singleCardIngredient = document.createElement('li');
+            singleCardIngredient.innerText = ingredient;
+            singleCardIngredients.appendChild(singleCardIngredient);
+        })
+
+        singleCardName.innerHTML = card.name;
+        singleCardWeight.innerHTML = 'Вес продукта ' + card.weight;
+        singleCardPrice.innerHTML = 'Цена продукта ' + card.price;
+        buyButton.innerHTML = 'Куплять';
 
 
-box.onmouseover = function(event) {
-    if (event.target == big){
-        big.style.background = 'red';
-        medium.style.background = 'white';
-    }
-
-    else if (event.target == medium && event.relatedTarget == big){
-        big.style.background = 'yellow';
-        medium.style.background = 'yellow';
-        inner.style.background = 'white';
-    }
-
-    else if (event.target == inner && event.relatedTarget == medium){
-        inner.style.background = 'green';
-        big.style.background = 'green';
-        medium.style.background = 'green';
-    }
-
-}
-
-box.onmouseout = function(event) {
-    if (event.target == inner && event.relatedTarget == medium){
-        big.style.background = 'yellow';
-        medium.style.background = 'yellow';
-        inner.style.background = 'white';
-
-    }
-
-    else if (event.target == medium && event.relatedTarget == big){
-        big.style.background = 'red';
-        medium.style.background = 'white';
-
-    }
-    else if (event.target == big && event.relatedTarget == box){
-        big.style.background = 'white';
+        singleCard.style.backgroundColor = 'orange';
+        singleCard.style.width = '15%';
+        singleCard.style.height = '70%';
+        singleCardIngredients.style.display = 'flex';
+        singleCardIngredients.style.flexDirection = 'column';
+        singleCardIngredients.style.gap = '10px';
+        singleCardIngredients.style.listStyle = 'none';
+        singleCardIngredients.style.background = '#f5f5f5';
+        singleCardIngredients.style.borderRadius = '8px';
 
 
-    }
-}
+        buyButton.addEventListener('click', function() {
+            if (!singleCard.hasAttribute('cock')) {
+
+                singleCardName.innerHTML = 'соси хуй'
+                singleCardWeight.innerHTML = 'соси хуй'
+                singleCardPrice.innerHTML = 'соси хуй'
+                singleCard.setAttribute('cock', 'true');
+            } else {
+                singleCardName.innerHTML = card.name;
+                singleCardWeight.innerHTML = 'Вес продукта ' + card.weight;
+                singleCardPrice.innerHTML = 'Цена продукта ' + card.price;
+                singleCard.removeAttribute('cock');
+
+            }
+
+
+
+        })
+
+
+        cardbox.appendChild(singleCard);
+        singleCard.appendChild(singleCardName);
+        singleCard.appendChild(singleCardWeight);
+        singleCard.appendChild(singleCardIngredients);
+        singleCard.appendChild(singleCardPrice);
+        singleCard.appendChild(buyButton);
+
+
+
+
+    })
+})
+
