@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Первая страница дачного проекта</title>
-    <script src="./task1.js" defer></script>
+    <script src="task1.js" defer></script>
     <style>
         /* 1. ПЕРЕМЕННЫЕ (Современная фишка)
           Задаем палитру сайта в одном месте. Если захотим поменять цвет,
@@ -283,84 +283,30 @@
             padding: 25px;
             font-size: 28px;
         }
+
+        #button-container {
+            position: absolute;
+            left: 404px;
+            top: 0px;
+
+            width: 100px;
+            height: 100px;
+            border: 4px solid black;
+            padding: 30px;
+            background-color: #2d5a3f;
+        }
+
+        #button-container2 {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            background-color: #5a2d2d;
+        }
     </style>
 </head>
 <body>
-<table id="table">
-    <tr>
-        <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
-    </tr>
-    <tr>
-        <td class="nw"><strong>Северо-Запад</strong>
-            <br>Металл
-            <br>Серебро
-            <br>Старейшины
-        </td>
-        <td class="n"><strong>Север</strong>
-            <br>Вода
-            <br>Синий
-            <br>Перемены
-        </td>
-        <td class="ne"><strong>Северо-Восток</strong>
-            <br>Земля
-            <br>Жёлтый
-            <br>Направление
-        </td>
-    </tr>
-    <tr>
-        <td class="w"><strong>Запад</strong>
-            <br>Металл
-            <br>Золото
-            <br>Молодость
-        </td>
-        <td class="c"><strong>Центр</strong>
-            <br>Всё
-            <br>Пурпурный
-            <br>Гармония
-        </td>
-        <td class="e"><strong>Восток</strong>
-            <br>Дерево
-            <br>Синий
-            <br>Будущее
-        </td>
-    </tr>
-    <tr>
-        <td class="sw"><strong>Юго-Запад</strong>
-            <br>Земля
-            <br>Коричневый
-            <br>Спокойствие
-        </td>
-        <td class="s"><strong>Юг</strong>
-            <br>Огонь
-            <br>Оранжевый
-            <br>Слава
-        </td>
-        <td class="se"><strong>Юго-Восток</strong>
-            <br>Дерево
-            <br>Зеленый
-            <br>Роман
-        </td>
-    </tr>
-
-</table>
-
-<textarea id="text"></textarea>
-
-<input type="button" onclick="text.value=''" value="Очистить">
-
-<div class="boxbox">
-<div class="outer">
-    div
-
-    <div class="middle">
-        div
-
-        <div class="inner">
-            div
-        </div>
-
+    <div id="button-container">
+        <button id="button-container2"></button>
     </div>
-</div>
-</div>
 </body>
 </html>

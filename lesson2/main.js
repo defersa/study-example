@@ -4,7 +4,6 @@ window.onload = () => {
 
     const { width, height} = document.body.getBoundingClientRect();
 
-
     div.addEventListener('mousemove', (currentEvent) => {
         if (previousEvent) {
             const currentPosition = div.getBoundingClientRect();
