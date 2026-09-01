@@ -11,8 +11,5 @@
         "command": "tsx apps/api/src/main.ts"
       }
     }
-  },
-  "scripts": {
-    "start:dev": ""
   }
 }
